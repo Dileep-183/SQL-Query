@@ -25,3 +25,6 @@ select a.dc_id,b.dc_name from (select dc_id from dc_discovery_master) a,(select 
 
 
 select dc_id,nvl(EDGEDC_BUILD_PHASE,'null') PHASE from dc_discovery_master
+
+
+select * from DMI
