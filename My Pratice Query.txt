@@ -1,0 +1,27 @@
+select a.dc_id,b.app_name,c.dc_name,d.BUILD_STATUS,e.EDC_NONEDC from dmi a, application_inventory b, dc_discovery_master c, Edge_dc_report d, apps_osi e
+where a.dc_id=b.dc_id and b.dc_id=c.dc_id and d.dc_id=e.dc_id
+and a.DB_Y_N = 'Yes'
+and b.APP_BUSINESS_SEGMENT = 'MBAG'
+and d.PLAN_HLD_STATUS = 'Completed'
+and c.DISP_STATUS_POST_DISCOVERY = 'Edge DC'
+and e.REGION = 'EMEA' order by dc_id
+
+
+select a.dc_id,DC_NAME from Edge_dc_report a where a.dc_id in (SELECT b.dc_id FROM dc_discovery_master b WHERE DISP_STATUS_POST_DISCOVERY = 'Edge DC')
+
+select a.dc_id,b.app_name from dmi a,application_inventory b where a.dc_id = b.dc_id
+
+select dc_id,dc_name,(case UPDATED_DC_MIGRATION_WAVE 
+when 'Wave 4b(1)' then 'Wave 4' 
+when 'Wave 3(1)' then 'Wave 3'
+when 'Wave 3(2)' then 'Wave 3(two)' 
+when 'Wave 4a(1)' then 'Wave 4(one)' 
+else 'NA' end) status from dc_discovery_master,
+
+
+select dc_id,dc_name from (select * from dc_discovery_master where region = 'EMEA')
+
+select a.dc_id,b.dc_name from (select dc_id from dc_discovery_master) a,(select dc_name from Edge_dc_report) b
+
+
+select dc_id,nvl(EDGEDC_BUILD_PHASE,'null') PHASE from dc_discovery_master
