@@ -32,3 +32,5 @@ select * from Application_Inventory
 select * from DC_Discovery_Master
 select * from EDGE_DC_Report
 select * from APPS_OSI
+
+These are all the 5 table that we using oracle apex for our project
