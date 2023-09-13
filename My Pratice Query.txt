@@ -26,6 +26,8 @@ select a.dc_id,b.dc_name from (select dc_id from dc_discovery_master) a,(select 
 
 select dc_id,nvl(EDGEDC_BUILD_PHASE,'null') PHASE from dc_discovery_master
 
+select b.region,b.city,b.country,a.* from DMI a,Application_Inventory b where a.dc_id = b.dc_id
+
 
 select * from DMI
 select * from Application_Inventory
