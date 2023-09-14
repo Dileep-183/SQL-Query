@@ -19,7 +19,7 @@ when 'Wave 4a(1)' then 'Wave 4(one)'
 else 'NA' end) status from dc_discovery_master,
 
 
-select dc_id,dc_name from (select * from dc_discovery_master where region = 'EMEA')
+select dc_id,dc_name from (select * from dc_discovery_master where region = 'APAC')
 
 select a.dc_id,b.dc_name from (select dc_id from dc_discovery_master) a,(select dc_name from Edge_dc_report) b
 
